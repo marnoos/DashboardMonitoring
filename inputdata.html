@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Data Siswa</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+        .section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Form Input Data Siswa</h2>
+
+        <form id="formSiswa">
+
+            <!-- DATA SISWA -->
+            <div class="section" id="sectionSiswa">
+                <h3>1. Data Siswa</h3>
+
+                <div class="form-group">
+                    <label>Nama Siswa</label>
+                    <input type="text" id="namaSiswa" required>
+                </div>
+
+                <div class="form-group">
+                    <label>NIS</label>
+                    <input type="text" id="nis" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <select id="jk" required>
+                        <option value="">-- Pilih --</option>
+                        <option>Laki-laki</option>
+                        <option>Perempuan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Tanggal Lahir</label>
+                    <input type="date" id="tglLahir" required>
+                </div>
+
+                <button type="button" onclick="bukaOrangTua()">
+                    Lanjut Data Orang Tua
+                </button>
+            </div>
+
+            <!-- DATA ORANG TUA -->
+            <div class="section hidden" id="sectionOrangTua">
+                <h3>2. Data Orang Tua</h3>
+
+                <div class="form-group">
+                    <label>Nama Ayah</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Pekerjaan Ayah</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Nama Ibu</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Pekerjaan Ibu</label>
+                    <input type="text" required>
+                </div>
+
+                <button type="button" onclick="bukaDomisili()">
+                    Lanjut Data Domisili
+                </button>
+            </div>
+
+            <!-- DATA DOMISILI -->
+            <div class="section hidden" id="sectionDomisili">
+                <h3>3. Data Domisili</h3>
+
+                <div class="form-group">
+                    <label>Alamat</label>
+                    <textarea rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Kota</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Provinsi</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Kode Pos</label>
+                    <input type="text" required>
+                </div>
+
+                <button type="submit">
+                    Simpan Data
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        function bukaOrangTua() {
+
+            let nama = document.getElementById("namaSiswa").value;
+            let nis = document.getElementById("nis").value;
+            let jk = document.getElementById("jk").value;
+            let tgl = document.getElementById("tglLahir").value;
+
+            if (nama && nis && jk && tgl) {
+                document.getElementById("sectionOrangTua")
+                    .classList.remove("hidden");
+            } else {
+                alert("Lengkapi Data Siswa terlebih dahulu!");
+            }
+        }
+
+        function bukaDomisili() {
+            document.getElementById("sectionDomisili")
+                .classList.remove("hidden");
+        }
+
+        document.getElementById("formSiswa")
+            .addEventListener("submit", function (e) {
+                e.preventDefault();
+                alert("Data berhasil disimpan!");
+            });
+    </script>
+
+</body>
+
+</html>
