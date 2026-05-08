@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Form Data Siswa</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .step-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-item::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            right: -50%;
+            width: 100%;
+            height: 3px;
+            background: #ccc;
+            z-index: 0;
+        }
+
+        .step-item:last-child::after {
+            display: none;
+        }
+
+        .circle {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #ccc;
+            color: white;
+            margin: auto;
+            line-height: 35px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .active .circle {
+            background: #007bff;
+        }
+
+        .active p {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .button-group {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Form Input Data Siswa</h2>
+
+        <!-- STEP -->
+        <div class="step">
+
+            <div class="step-item active" id="step1">
+                <div class="circle">1</div>
+                <p>Data Siswa</p>
+            </div>
+
+            <div class="step-item" id="step2">
+                <div class="circle">2</div>
+                <p>Data Orang Tua</p>
+            </div>
+
+            <div class="step-item" id="step3">
+                <div class="circle">3</div>
+                <p>Data Domisili</p>
+            </div>
+
+        </div>
+
+        <form id="formData">
+
+            <!-- BAGIAN 1 -->
+            <div class="form-section active" id="section1">
+
+                <h3>1. Data Siswa</h3>
+
+                <div class="form-group">
+                    <label>Nama Siswa</label>
+                    <input type="text" id="nama" required>
+                </div>
+
+                <div class="form-group">
+                    <label>NIS</label>
+                    <input type="text" id="nis" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <select id="jk" required>
+                        <option value="">-- Pilih --</option>
+                        <option>Laki-laki</option>
+                        <option>Perempuan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Tanggal Lahir</label>
+                    <input type="date" id="tgl" required>
+                </div>
+
+                <div class="button-group">
+                    <div></div>
+                    <button type="button" onclick="next1()">
+                        Selanjutnya
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- BAGIAN 2 -->
+            <div class="form-section" id="section2">
+
+                <h3>2. Data Orang Tua</h3>
+
+                <div class="form-group">
+                    <label>Nama Ayah</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Pekerjaan Ayah</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Nama Ibu</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Pekerjaan Ibu</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" onclick="back1()">
+                        Kembali
+                    </button>
+
+                    <button type="button" onclick="next2()">
+                        Selanjutnya
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- BAGIAN 3 -->
+            <div class="form-section" id="section3">
+
+                <h3>3. Data Domisili</h3>
+
+                <div class="form-group">
+                    <label>Alamat</label>
+                    <textarea rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Kota</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Provinsi</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Kode Pos</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" onclick="back2()">
+                        Kembali
+                    </button>
+
+                    <button type="submit">
+                        Simpan
+                    </button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script>
+
+        function next1() {
+
+            let nama = document.getElementById("nama").value;
+            let nis = document.getElementById("nis").value;
+            let jk = document.getElementById("jk").value;
+            let tgl = document.getElementById("tgl").value;
+
+            if (nama && nis && jk && tgl) {
+
+                document.getElementById("section1").classList.remove("active");
+                document.getElementById("section2").classList.add("active");
+
+                document.getElementById("step2").classList.add("active");
+
+            } else {
+                alert("Lengkapi Data Siswa terlebih dahulu!");
+            }
+        }
+
+        function back1() {
+            document.getElementById("section2").classList.remove("active");
+            document.getElementById("section1").classList.add("active");
+        }
+
+        function next2() {
+            document.getElementById("section2").classList.remove("active");
+            document.getElementById("section3").classList.add("active");
+
+            document.getElementById("step3").classList.add("active");
+        }
+
+        function back2() {
+            document.getElementById("section3").classList.remove("active");
+            document.getElementById("section2").classList.add("active");
+        }
+
+        document.getElementById("formData")
+            .addEventListener("submit", function (e) {
+                e.preventDefault();
+                alert("Data berhasil disimpan!");
+            });
+
+    </script>
+
+</body>
+
+</html>
